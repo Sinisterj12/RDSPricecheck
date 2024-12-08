@@ -1,0 +1,33 @@
+Below is a single prompt you can give to Replit. Just copy and paste it into the Replit prompt:
+
+---
+
+**PROMPT START**
+
+You are a coding assistant that will help me build a cross-platform mobile app (Android and iOS) in React Native using Expo. The app is called “RDS Price Checker” and it’s designed for grocery store owners who aren’t tech-savvy. I need a user-friendly, clean interface that uses my company colors (red, white, blue, and a bit of black). The branding is “RDS” and the app will allow scanning products via a device’s camera, reading barcodes, and then querying a remote SQL database to show base price and current price. The UI should have large buttons, simple navigation, and minimal clutter. Assume I will later add the actual database credentials and specific SQL queries, but please prepare the code structure with placeholder functions and comments where I can insert my credentials and SQL logic.
+
+**Key Features:**
+- A secure login screen where store owners enter their SQL credentials once, stored securely on the device (use react-native-secure-store or a similar recommended secure storage library).
+- A main screen with a big “Scan Product” button that opens the camera and scans a barcode.
+- After a successful scan, the app should query the database (just mock this for now) and show the product name, base price, and current price.
+- Include a simple settings screen to update credentials and possibly a “test connection” button.
+- Keep it as simple and stable as possible.
+- Use a recommended barcode scanning library (e.g. `react-native-camera` or `expo-barcode-scanner`) that works smoothly with Expo.
+- Code should be commented so I can understand where to add my SQL connection code.
+- Add basic error handling and clear instructions on the screen if something fails or if credentials are missing.
+- Navigation can be done with React Navigation, and styling with a consistent color scheme (red, white, blue with touches of black for text).
+- Provide instructions in comments at the top of the code on how to run the app, where to add database credentials, and how to build for iOS and Android.
+
+**Dependencies and Imports:**
+- Expo CLI and React Native environment (assume I’m using Replit’s environment)
+- `expo-barcode-scanner` for scanning
+- `@react-navigation/native` and related packages for navigation
+- `react-native-secure-store` (or a similar secure storage method for credentials)
+- `expo-status-bar` for a polished look
+- `expo-linear-gradient` if needed for nice background effects
+- A simple placeholder icon or logo (just use a colored View or text for now)
+
+**Goal:**
+Produce the full code in a main App.js plus any other necessary files, including navigation setup, screens directory (LoginScreen.js, MainScreen.js, ScanScreen.js, SettingsScreen.js), and a utils directory for mock SQL query functions. Add comments everywhere I might need to customize queries or credentials. Make sure this code can be run and tested easily, and that the UI is simple, intuitive, and pleasing.
+
+**PROMPT END**
