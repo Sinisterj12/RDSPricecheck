@@ -6,7 +6,7 @@ class Config:
     SECRET_KEY = os.environ.get('FLASK_SECRET_KEY', 'dev-key-change-in-production')
     
     # Database
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///app.db')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Session

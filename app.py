@@ -24,8 +24,14 @@ login_manager.login_view = 'login'
 from routes import *
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+    try:
+        with app.app_context():
+            db.create_all()
+            logger.info("Database tables created successfully")
+    except Exception as e:
+        logger.error(f"Error creating database tables: {str(e)}")
+        raise
+
     app.run(
         host='0.0.0.0',
         port=os.getenv('PORT', '8080'),
