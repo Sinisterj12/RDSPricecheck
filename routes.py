@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, flash, jsonify, request
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import exc as sqlalchemy
 from app import app, db
 from models import User
 from forms import LoginForm, RegistrationForm
@@ -53,11 +54,20 @@ def register():
             db.session.add(user)
             db.session.commit()
             flash('Registration successful! Please login.', 'success')
+            logging.info(f'User registered successfully: {user.username}')
             return redirect(url_for('login'))
+        except sqlalchemy.exc.OperationalError as e:
+            db.session.rollback()
+            flash('Database connection error. Please try again later.', 'error')
+            logging.error(f'Database connection error during registration: {str(e)}')
+        except sqlalchemy.exc.IntegrityError as e:
+            db.session.rollback()
+            flash('Username already exists. Please choose a different username.', 'error')
+            logging.error(f'IntegrityError during registration: {str(e)}')
         except Exception as e:
             db.session.rollback()
-            flash('Registration failed. Please try again.', 'error')
-            logging.error(f'Registration error: {str(e)}')
+            flash('An unexpected error occurred. Please try again later.', 'error')
+            logging.error(f'Unexpected error during registration: {str(e)}')
     
     return render_template('register.html', form=form)
 
