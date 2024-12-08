@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Scan Product{% endblock %}
+
+{% block content %}
+<div class="scanner-container">
+    <video id="scanner-view" playsinline></video>
+</div>
+
+<div class="text-center mt-1">
+    <button id="scan-button" class="btn btn-primary">Scan Barcode</button>
+</div>
+
+<div id="scan-result" class="mt-1"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
+{% endblock %}

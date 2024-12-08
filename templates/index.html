@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="text-center">Welcome to RDS Price Checker</h2>
+    <p class="text-center mb-1">Quickly scan and check prices for your products</p>
+    
+    <div class="text-center">
+        <a href="{{ url_for('scan') }}" class="btn btn-primary">Start Scanning</a>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Quick Guide</h3>
+    <ul>
+        <li>Click "Start Scanning" to open the scanner</li>
+        <li>Point your camera at a product barcode</li>
+        <li>View price information instantly</li>
+        <li>Update database settings in the Settings page</li>
+    </ul>
+</div>
+{% endblock %}
